@@ -116,14 +116,16 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             );
                           }
                           return SizedBox(
-                            height: 300,
+                            height: MediaQuery.of(context).size.height * 0.7,
+                           
+                            width: MediaQuery.of(context).size.width,
                             child: GridView.builder(
                               scrollDirection: Axis.vertical,
                               itemCount: favoriteProducts.length,
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                mainAxisSpacing: 2,
-                                crossAxisSpacing: 0,
+                                mainAxisSpacing: 4,
+                                crossAxisSpacing: 6,
                                 childAspectRatio: 0.80,
                               ),
                               itemBuilder: (context, index) {

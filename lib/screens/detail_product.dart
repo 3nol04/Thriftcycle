@@ -58,8 +58,12 @@ Future<void> _toggleFavorite() async {
           future: Product.getProduct(widget.idProduct),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
+              return Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
               );
             } else if (snapshot.hasError) {
               return Center(
@@ -67,7 +71,7 @@ Future<void> _toggleFavorite() async {
               );
             } else if (snapshot.hasData) {
               final product = snapshot.data!;
-              return Hero( tag: "Detail", child: Detailview(product: product));
+              return Hero( tag: product.id, child: Detailview(product: product));
             } else {
               return const Center(
                 child: Text('Data tidak ditemukan.'),

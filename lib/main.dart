@@ -27,13 +27,15 @@ class _MyAppState extends State<MyApp> {
     _startSplashScreenTimer();
   }
 
-  void _startSplashScreenTimer() {
+ void _startSplashScreenTimer() {
+  WidgetsBinding.instance.addPostFrameCallback((_) {
     Future.delayed(const Duration(seconds: 10), () {
       setState(() {
         _isSplashScreen = false;
       });
     });
-  }
+  });
+}
 
   @override
   Widget build(BuildContext context) {
@@ -58,13 +60,13 @@ class _HomeState extends State<Home> {
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   int _currentIndex = 0;
 
-  final List<Widget> _pages = [
-    Center(child: Hero(tag: "Dash", child: const HomePage())),
-    SearchScreen(),
-    Center(child: Hero(tag: "Upload", child: UploadScreen())),
-    Center(child: Hero(tag: "Favorite", child: const FavoriteScreen())),
-    ProfileScreen()
-  ];
+final List<Widget> _pages = [
+  const  HomePage(),
+  SearchScreen(),
+  UploadScreen(),  
+  const FavoriteScreen(),
+  ProfileScreen(),
+];
 
   @override
   Widget build(BuildContext context) {
@@ -110,6 +112,7 @@ class _HomeState extends State<Home> {
             _currentIndex = index; // Perbarui indeks saat item diklik
           });
         },
+        
       ),
     );
   }

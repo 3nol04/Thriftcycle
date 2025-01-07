@@ -21,7 +21,7 @@ class _DetailviewState extends State<Detailview> {
 
    Future<void> _loadFavoriteStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String key = 'favorite_${widget.product.id}'; // Gunakan ID produk
+    String key = 'favorite_${widget.product.id}'; 
     setState(() {
       isFavorite = prefs.getBool(key) ?? false;
     });
@@ -29,7 +29,7 @@ class _DetailviewState extends State<Detailview> {
 
    Future<void> _toggleFavorite() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String key = 'favorite_${widget.product.id}'; // Gunakan ID produk
+    String key = 'favorite_${widget.product.id}'; 
     setState(() {
       isFavorite = !isFavorite;
     });
