@@ -55,9 +55,9 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+ 
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
         child: Column(
           children: [
             Row(
@@ -107,7 +107,7 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                           if (favoriteProducts.isEmpty) {
                             return const Center(
                               child: Padding(
-                                 padding: const EdgeInsets.only(top: 200),
+                              padding: const EdgeInsets.only(top: 200),
                                 child: Text(
                                   "No Favorite Here", 
                                   style: TextStyle(fontSize: 18),
@@ -116,16 +116,15 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
                             );
                           }
                           return SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.7,
-                           
+                            height: MediaQuery.of(context).size.height * 0.75,
                             width: MediaQuery.of(context).size.width,
                             child: GridView.builder(
                               scrollDirection: Axis.vertical,
                               itemCount: favoriteProducts.length,
                               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 2,
-                                mainAxisSpacing: 4,
-                                crossAxisSpacing: 6,
+                                mainAxisSpacing: 2,
+                                crossAxisSpacing: 0,
                                 childAspectRatio: 0.80,
                               ),
                               itemBuilder: (context, index) {

@@ -27,6 +27,7 @@ class _CardProductState extends State<CardProduct> {
         );
       },
       child: Container(
+        width: 300,
         margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
@@ -71,9 +72,10 @@ class _CardProductState extends State<CardProduct> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          widget.product.item.length > 9
+                          widget.product.item.length > 10
                               ? widget.product.item.substring(0, 10) + "..."
                               : widget.product.item,
+                          textAlign: TextAlign.left,
                           style: const TextStyle(
                             fontFamily: 'Rewals',
                             fontSize: 20,
