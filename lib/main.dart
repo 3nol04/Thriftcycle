@@ -10,21 +10,37 @@ import '../screens/time_line.dart';
 import '../screens/detail_product.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-        //home : StepsProgres(),
-        //home: TimeLine(),
-        // home: HomePage(),
-        //home:DetailProduct()
-        home: Splashscreen(),
-        // home : UploadScreen(),
-        //  home: SearchScreen(),
-        // home: ProfileScreen(),
-        // home : UploadScreen(),
-        // home: SearchScreen(),
-        // home: FavoriteScreen(),
-    
-  ));
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool _isSplashScreen = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _startSplashScreenTimer();
+  }
+
+  void _startSplashScreenTimer() {
+    Future.delayed(const Duration(seconds: 10), () {
+      setState(() {
+        _isSplashScreen = false;
+      });
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: _isSplashScreen ?const Splashscreen() : const Home(),
+    );
+  }
 }
 
 

@@ -67,7 +67,7 @@ Future<void> _toggleFavorite() async {
               );
             } else if (snapshot.hasData) {
               final product = snapshot.data!;
-              return Detailview(product: product);
+              return Hero( tag: "Detail", child: Detailview(product: product));
             } else {
               return const Center(
                 child: Text('Data tidak ditemukan.'),
