@@ -120,7 +120,7 @@ class _DetailviewState extends State<Detailview> {
                   child: Image(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                        "http://10.0.2.2:8000/storage/${widget.product.imageUri}"),
+                        "http://127.0.0.1:8000/storage/${widget.product.imageUri}"),
                   ),
                 ),
               ),
@@ -213,8 +213,9 @@ class _DetailviewState extends State<Detailview> {
                           Expanded(
                             child: Text(
                               widget.product.address,
-                              maxLines: 4,
+                              maxLines: 3,
                               overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.start,
                             ),
                           ),
                         ],
@@ -235,8 +236,9 @@ class _DetailviewState extends State<Detailview> {
                           Expanded(
                             child: Text(
                               widget.product.description,
-                              maxLines: 4,
+                              maxLines: 10,
                               overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.start,
                             ),
                           ),
                         ],

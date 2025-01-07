@@ -64,7 +64,7 @@ class _UploadScreenState extends State<UploadScreen> {
       return;
     }
 
-    final uri = Uri.parse("http://192.168.200.231:8000/api/items");
+    final uri = Uri.parse("http://127.0.0.1:8000/api/items");
     final request = http.MultipartRequest("POST", uri)
       ..fields['item_name'] = _productController.text
       ..fields['uploaded_by'] = _nameController.text
@@ -72,7 +72,7 @@ class _UploadScreenState extends State<UploadScreen> {
       ..fields['address'] = _addressController.text
       ..fields['phone_number'] = _phoneNumberController.text
       ..fields['item_description'] = _descriptionController.text
-      ..headers['Accept'] = 'application/json' 
+      ..headers['Accept'] = 'application/json'
       ..files.add(await http.MultipartFile.fromPath(
         'image',
         _image!.path,
@@ -94,7 +94,7 @@ class _UploadScreenState extends State<UploadScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              "Failed to upload product. Status code: ${response.statusCode}",
+              "Harap isi nomor HP dengan benar 10-13 digit!",
             ),
             backgroundColor: Colors.red,
           ),
@@ -128,7 +128,7 @@ class _UploadScreenState extends State<UploadScreen> {
       appBar: AppBar(
         title: const Text("Upload Product"),
         centerTitle: true,
-        automaticallyImplyLeading: false, 
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
@@ -162,6 +162,11 @@ class _UploadScreenState extends State<UploadScreen> {
               ),
             ),
             const SizedBox(height: 20),
+            const Text(
+              "Detail Product",
+              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
+            ),
+            const SizedBox(height: 10),
             Row(
               children: [
                 Expanded(
@@ -182,47 +187,102 @@ class _UploadScreenState extends State<UploadScreen> {
             const SizedBox(height: 20),
             const Text(
               "Personal Information",
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),
             ),
             const SizedBox(height: 10),
             _buildTextField("Name", _nameController),
             const SizedBox(height: 10),
-            _buildTextField("Address", _addressController),
+            _buildTextField("Address", _addressController,),
             const SizedBox(height: 10),
-            Row(
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  width: 60,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: const Center(
-                    child: Text(
-                      "+62",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                const Text(
+                  "Phone Number",
+                  style: TextStyle(fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: _buildTextField("Phone Number", _phoneNumberController),
+                Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top:10),
+                      child: Container(
+                        width: 59,
+                        height: 45,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child:Center(
+                          child: Text(
+                            "+62",
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      child:Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Container(
+                          width: 200,
+                          height: 47,
+                          decoration: BoxDecoration(
+                            color: Colors.grey[300],
+                            borderRadius: BorderRadius.circular(8), 
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10,top: 28),
+                            child: TextField(
+                                  controller: _phoneNumberController,
+                                  keyboardType: TextInputType.number,
+                                  maxLength: 13,
+                                  decoration: InputDecoration(
+                                  hintText: "85123456789",
+                                  labelStyle: TextStyle(color: Colors.white),
+                                    border: InputBorder.none,
+                                  
+                                  ),
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
             const SizedBox(height: 20),
-            Center(
-              child: ElevatedButton(
-                onPressed: _uploadProduct,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 35, 149, 151),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10),
+            Padding(padding: const EdgeInsets.only(top: 2, bottom: 25),
+              child: Center(
+                child: SizedBox(
+                  width: 170,
+                  height: 50,
+                  child: ElevatedButton(
+                    onPressed: _uploadProduct,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: const Color.fromARGB(255, 35, 149, 151),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      
+                    ),
+                    child: Row(
+                      children: [
+                        const Text(
+                          "Upload Product",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 10),
+                        const Icon(
+                          Icons.upload, color: Colors.white
+                        )
+                      ],
+                    ),
                   ),
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
-                child: const Text("Upload Product", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),) ,
               ),
             ),
           ],

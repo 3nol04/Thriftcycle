@@ -22,13 +22,13 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 2000), () {
+    Future.delayed(const Duration(milliseconds: 1000), () {
           // Perhitungan berdasarkan lebar layar
           _x1 = 1090.0;
           _x2 = -1000.0;
         });
 
-    Future.delayed(const Duration(milliseconds: 4000), () {
+    Future.delayed(const Duration(milliseconds: 3000), () {
       setState(() {
         _heightLogo = 300.0;
         _widthLogo = 300.0;

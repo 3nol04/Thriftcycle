@@ -52,24 +52,25 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 35),
-              child: Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  height: 50,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      const Image(
-                        image: AssetImage("image/logo.png"),
-                        height: 40,
-                        width: 40,
-                      ),
-                      const Spacer(),
-                      Container(
+              padding: const EdgeInsets.only(top: 43),
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                width: MediaQuery.of(context).size.width*0.85 ,
+                height: 50,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Image(
+                      image: AssetImage("image/logo.png"),
+                      height: 60,
+                      width: 60,
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: Container(
                         width: 40,
                         height: 40,
                         decoration: BoxDecoration(
@@ -103,8 +104,7 @@ class _HomePageState extends State<HomePage> {
                                         children: [
                                           CircleAvatar(
                                             radius: 70,
-                                            backgroundImage: profileImage ==
-                                                    null
+                                            backgroundImage: profileImage == null
                                                 ? const AssetImage(
                                                         "image/Profile_Default.png")
                                                     as ImageProvider
@@ -128,8 +128,8 @@ class _HomePageState extends State<HomePage> {
                           },
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -225,9 +225,8 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                   ),
-                   const SizedBox(
+                  const SizedBox(
                     height: 10,
-                   
                   ),
                   // TODO: List Category
                   SizedBox(
@@ -256,14 +255,13 @@ class _HomePageState extends State<HomePage> {
                       padding: EdgeInsets.all(8.0),
                       child: Text(
                         "Product",
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20),
                       ),
                     ),
                   ),
                   const SizedBox(
                     height: 20,
-                   
                   ),
                   //TODO : List Product
                   FutureBuilder<List<Product>>(

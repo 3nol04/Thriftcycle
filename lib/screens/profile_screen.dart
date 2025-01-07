@@ -53,7 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 const Text(
                   'Profile',
                   style: TextStyle(
-                    fontSize: 17,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
