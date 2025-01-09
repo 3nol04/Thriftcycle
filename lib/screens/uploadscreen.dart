@@ -64,7 +64,7 @@ class _UploadScreenState extends State<UploadScreen> {
       return;
     }
 
-    final uri = Uri.parse("http://127.0.0.1:8000/api/items");
+    final uri = Uri.parse("https://api-db-beta.vercel.app/api/api/items/");
     final request = http.MultipartRequest("POST", uri)
       ..fields['item_name'] = _productController.text
       ..fields['uploaded_by'] = _nameController.text
@@ -337,6 +337,7 @@ class _UploadScreenState extends State<UploadScreen> {
           child: DropdownButtonFormField<String>(
             value: _selectedCategory,
             decoration: const InputDecoration(
+              hintText: "Select Category",
               border: InputBorder.none,
               contentPadding: EdgeInsets.symmetric(horizontal: 10),
             ),
