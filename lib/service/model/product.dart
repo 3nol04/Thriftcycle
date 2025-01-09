@@ -30,7 +30,7 @@ class Product {
       item: json['item_name'],
       description: json['item_description'],
       phoneNumber: json['phone_number'],
-      imageUri: json['image_path'],
+      imageUri: json['image_url'],
       address: json['address'],
       category: json['category'],
       uploadBy: json['uploaded_by'],
@@ -55,7 +55,7 @@ class Product {
     //conto: "http://10.0.2.2:8000/storage/${widget.product.imageUri}"
     //jika menggunakan device fisik gunakan ip sesuai dengan ip yang digunakan
     //contoh: "http://127.0.0.1:8000/storage/${widget.product.imageUri}"
-    const url = 'http://127.0.0.1:8000/api/items';
+    const url = 'https://api-db-beta.vercel.app/api/api/items';
     final response = await http.get(Uri.parse(url));
     final Map<String, dynamic> data = json.decode(response.body);
     if (data['success'] == true) {
@@ -68,7 +68,7 @@ class Product {
 
 
   static Future<Product> getProduct(int productId) async {
-    final url = 'http://127.0.0.1:8000/api/items/$productId';
+    final url = 'https://api-db-beta.vercel.app/api/api/items/$productId';
     final response = await http.get(Uri.parse(url));
     final data = json.decode(response.body);
     if (data['success'] == true) {

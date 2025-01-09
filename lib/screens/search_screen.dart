@@ -16,7 +16,7 @@ class _SearchScreenState extends State<SearchScreen> {
 
   /// ✅ Update search results based on item name
   Future<List<Product>> searchProducts(String query) async {
-    final String url = 'http://127.0.0.1:8000/api/items';
+    final String url = 'https://api-db-beta.vercel.app/api/api/items';
     final response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       final data = json.decode(response.body);

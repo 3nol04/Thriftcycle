@@ -273,7 +273,8 @@ class _HomePageState extends State<HomePage> {
                                 CircularProgressIndicator()); // Menunggu data dimuat
                       } else if (snapshot.hasError) {
                         return Center(
-                            child: Text("Harapkan periksa koneksi internet"));
+                            child: Text(snapshot.error
+                                .toString()));
 
                         /// Menampilkan error jika ada
                       } else if (snapshot.hasData) {

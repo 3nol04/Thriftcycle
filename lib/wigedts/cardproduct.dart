@@ -45,7 +45,7 @@ class _CardProductState extends State<CardProduct> {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Image.network(
-                "http://127.0.0.1:8000/storage/${widget.product.imageUri}",
+                widget.product.imageUri,
                 width: 300,
                 height: 100,
                 fit: BoxFit.cover,
