@@ -6,8 +6,7 @@ import 'package:thriftcycle/screens/uploadscreen.dart';
 import 'package:thriftcycle/screens/favorite_screen.dart';
 import 'package:thriftcycle/wigedts/splashscreen.dart';
 import '../screens/homepage.dart';
-import '../screens/time_line.dart';
-import '../screens/detail_product.dart';
+
 
 void main() {
   runApp(MyApp());
